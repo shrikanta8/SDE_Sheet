@@ -1,4 +1,3 @@
-
 class Solution {
 public:
     void paint(vector<vector<int>>& image, int x, int y,int r, int c, int newColor, int oldColor){
@@ -23,7 +22,7 @@ public:
         
     }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
-        // if( image[sr][sc]== newColor) return image;
+        if( image[sr][sc]== newColor) return image;
         int c=image[0].size() ,r=image.size();
         int oldColor = image[sr][sc];
         image[sr][sc]= newColor;
