@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/kth-largest-element-in-an-array/
+
 class Solution {
 public:
     int findKthLargest(vector<int>& A, int B) {
@@ -14,5 +16,17 @@ public:
         }
         
         return pq.top();   
+    }
+};
+
+//stl
+class Solution {
+public:
+    int findKthLargest(vector<int>& A, int B) {
+         // nth_element(A.begin(), A.begin()+B-1,A.end(), greater<int>());
+        partial_sort(A.begin(), A.begin()+B,A.end(), greater<int>());
+        // for(auto n:A)
+        //     cout<<n<<" ";
+        return A[B-1];   
     }
 };
