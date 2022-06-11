@@ -1,20 +1,23 @@
+//https://leetcode.com/problems/single-element-in-a-sorted-array/discuss/627921/Java-or-C%2B%2B-or-Python3-or-Easy-explanation-or-O(logn)-or-O(1)
+
 class Solution {
-    public int singleNonDuplicate(int[] nums) {
-        int left=0,right=nums.length-1,mid=0;
-        if(right == 0)
-            return nums[right];
-        while(left < right){
-             mid = left + (right - left)/2;
-            if(nums[mid] == nums[mid + 1] )
-                mid--;
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        
+        int st=0,en = nums.size()-1;
+        
+        while(st<en){
+            int mid = (st + en)>>1;
             
-            if( (mid -left + 1) %2 != 0 ){
-                right = mid;   
-            }
-            else{
-                left = mid + 1;
-            }
+            if( (mid%2==0 && nums[mid]==nums[mid+1] ) || (mid%2!=0 && nums[mid]==nums[mid-1] ) )
+                st = mid+1;
+            else
+                en=mid; //not mid-1 because mid can be our ans
         }
-        return nums[left];
+        
+        //(mid%2!=0 && nums[mid]==nums[mid-1] ) when mid = 3 in example like: 
+        //index: 0 1 2 3 4 5 6  
+        //val:   1 1 2 2 4 5 5 
+        return nums[st];
     }
-}
+};
