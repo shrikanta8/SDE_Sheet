@@ -17,3 +17,12 @@ int minSumPath(vector<vector<int>> &grid) {
     return memoization(dp,grid,r-1,c-1);
     // Write your code here.
 }
+
+Time Complexity: O(N*M)
+
+Reason: At max, there will be N*M calls of recursion.
+
+Space Complexity: O((M-1)+(N-1)) + O(N*M)
+
+Reason: We are using a recursion stack space:O((M-1)+(N-1)), here (M-1)+(N-1) is the path length and an external DP Array of size ‘N*M’.
+
