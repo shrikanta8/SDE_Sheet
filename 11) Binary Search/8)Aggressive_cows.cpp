@@ -1,14 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 bool checking(long long int a[],long long int mid,int n,int c);
 bool checking(long long int a[],long long int mid,int n,int c){
     int chk=1;
     long long int var=a[0];
     for(int i=1;i<n;i++){
         if(a[i]-var>=mid)
-        {   if(++chk ==c)
+        {   
+            if(++chk ==c)
                 { 
-                    return true;}
+                    return true;
+                }
             var=a[i];
         }
     }
