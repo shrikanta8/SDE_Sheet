@@ -13,11 +13,13 @@ public:
                                        { 'M' , 1000 } };
 
        int sum = T[s.back()];
+        //having value of last roman numeral
+        
        for (int i = s.length() - 2; i >= 0; --i) 
        {
            if (T[s[i]] < T[s[i + 1]])
            {
-               sum -= T[s[i]];
+               sum -= T[s[i]];  //if current i roman numeral is less than i+1
            }
            else
            {
