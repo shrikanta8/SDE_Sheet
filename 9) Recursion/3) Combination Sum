@@ -1,0 +1,30 @@
+//https://leetcode.com/problems/combination-sum/
+
+class Solution {
+public:
+    void func(vector<vector<int>>& ans,vector<int>& arr, vector<int>& c, int t,int ind,int  n){
+        if(ind==n || t<0) return;
+        
+        if(t==0){
+            ans.push_back(arr);
+            return;
+        }
+        
+        arr.push_back(c[ind]);
+        func(ans,arr,c,t-c[ind],ind,n);
+        arr.pop_back();
+    
+        func(ans,arr,c,t,ind+1,n);
+    }
+    vector<vector<int>> combinationSum(vector<int>& c, int t) {
+        vector<vector<int>> ans;
+        vector<int> arr;
+        func(ans,arr, c,t,0 ,c.size());
+        return ans;
+    }
+};
+
+//Time Complexity: O(2^t * k) where t is the target, k is the average length
+//if first element is 1 and t=10 then height will be more(10 times we can “pick or not pick” an element)
+
+//Space Complexity: O(k*x), k is the average length and x is the no. of combinations
