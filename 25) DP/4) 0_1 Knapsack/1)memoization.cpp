@@ -19,7 +19,7 @@
     //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int W, int wt[], int val[], int n) 
     { 
-        vector<vector<int> > dp(n,vector<int>(W+1));
+        vector<vector<int> > dp(n,vector<int>(W+1,-1));
         
         return func(W,wt,val,n-1,dp);
        // Your code here
