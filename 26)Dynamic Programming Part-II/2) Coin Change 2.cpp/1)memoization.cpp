@@ -1,8 +1,8 @@
- minimumElementsUtil(vector<int>& arr, int ind, int T, vector<vector<int>>& dp){
+ int minimumElementsUtil(vector<int>& arr, int ind, int T, vector<vector<int>>& dp){
 
         if(ind == 0){
             if(T%arr[0] == 0) return T/arr[0];
-            else return 1e9;
+            return 1e9;
         }
 
         if(dp[ind][T]!=-1)
