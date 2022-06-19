@@ -1,0 +1,101 @@
+//https://leetcode.com/problems/n-queens/
+
+class Solution {
+public:
+    bool chk(int x,int y, int n, vector<vector<string>>& ds, vector<string>& ans){      //taking 3N
+        for(int i=y;i>=0;i--){
+            if(ans[x][i]=='Q')return false;
+        }
+        int nx=x,ny=y;
+        while(nx>=0 && ny>=0){
+            if(ans[nx--][ny--]=='Q')return false;
+        }
+        nx=x,ny=y;
+        while(nx<n && ny>=0){
+            if(ans[nx++][ny--] == 'Q')
+                return false;
+        }
+        return true;
+    }
+    void func(int col, int n, vector<vector<string>>& ds, vector<string>& ans){
+        if(col==n){
+            ds.emplace_back(ans);
+            return;
+        }
+        for(int r=0;r<n;r++){
+            if(chk(r,col,n,ds,ans)){
+                ans[r][col] ='Q';
+                func(col+1,n,ds,ans);
+                ans[r][col] ='.';
+            }
+        }
+        
+    }
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> ds;
+        vector<string> ans(n);
+        string s(n,'.');
+        for(int i=0;i<n;i++){
+            ans[i]=s;
+        }
+        func(0,n,ds,ans);
+        return ds;
+    }
+};
+
+
+// Time Complexity: O( N^3 ) 
+// Space Complexity: O( N^2 )
+
+
+
+
+
+
+//optimized
+
+class Solution {
+public:
+    
+    void func(int col, int n, vector<vector<string>>& ds, vector<string>& ans, vector<bool>& leftRow,vector<bool>& bottDiag, vector<bool>& topDiag){
+    
+        if(col==n){         //it is possible, since it reached out of the box 
+            ds.emplace_back(ans);
+            return;
+        }
+        for(int r=0;r<n;r++){
+            if(!leftRow[r] && !bottDiag[r+col] && !topDiag[(n-1) + (col-r)] ){
+                
+                leftRow[r]=1;
+                bottDiag[r+col]=1;
+                topDiag[(n-1) + (col-r)]=1;
+                
+                ans[r][col] ='Q';
+                func(col+1,n,ds,ans,leftRow, bottDiag, topDiag);
+                ans[r][col] ='.';
+                
+                leftRow[r]=0;           //assigning back 
+                bottDiag[r+col]=0;
+                topDiag[(n-1) + (col-r)]=0;
+            }
+        }
+        
+    }
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> ds;
+        vector<string> ans(n);
+        string s(n,'.');
+        vector<bool> leftRow(n+1,0);        //to check in left side of row
+        vector<bool> bottDiag(2*n-1,0);     //to check in bottom(south-west) side Diagonal
+        vector<bool> topDiag(2*n-1,0);      //to check in top(north-west) Diagonal
+        for(int i=0;i<n;i++){
+            ans[i]=s;
+        }
+        func(0,n,ds,ans,leftRow, bottDiag, topDiag);
+        return ds;
+    }
+};
+
+
+// Time Complexity: O( N^2 ) 
+// Space Complexity: O( N^2 )
