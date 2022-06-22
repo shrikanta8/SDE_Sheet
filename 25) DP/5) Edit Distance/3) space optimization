@@ -1,0 +1,32 @@
+
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+        int len1 = word1.length(),len2 = word2.length();
+        
+        vector<int> pre(len2+1), cur(len2+1);
+        
+        for(int i=1;i<=len2;i++){
+             pre[i] = i;
+         }
+        
+        for(int i=1;i<=len1;i++){
+            cur[0] = i;      //the case that dp[i][0] should have i in it;
+            for(int j=1;j<=len2;j++){
+                
+                if(word1[i-1] == word2[j-1]){   //no operation required here
+                    cur[j] = 0 + pre[j-1];
+                }
+                else
+                    cur[j] = 1 + min( pre[j-1] , min( cur[j-1], pre[j] ) );
+
+                // i-1, j-1 REPLACE
+                // i, j-1 INSERT
+                // i-1, j DELETE
+            }
+            pre=cur;
+        }
+        return pre[len2];
+        
+    }
+};
