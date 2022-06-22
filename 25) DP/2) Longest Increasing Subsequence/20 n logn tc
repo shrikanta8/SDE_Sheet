@@ -1,0 +1,37 @@
+//https://leetcode.com/problems/longest-increasing-subsequence/
+
+// approach 2
+class Solution {
+public:
+    
+    int func(vector<int> ans, int f){   //finding the element which is greater than current element
+        int s=0,e = ans.size()-1;
+        while(s<=e){
+            int mid = s + (e-s)/2;
+            if(ans[mid] >= f){
+                e = mid-1;
+            }
+            else
+                s=mid+1;
+        }
+        return s;
+    }
+    
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> ans;
+        ans.push_back(nums[0]);
+        
+        for(int i=1;i<nums.size();i++){
+            
+            if(nums[i] > ans.back())    //no element which is greater than nums[i]
+                ans.push_back(nums[i]);
+            else{
+                // ans[func(ans,nums[i])] = nums[i];    //binary search
+                
+                int index = lower_bound(ans.begin(),ans.end(),nums[i])-ans.begin();
+                ans[index] = nums[i];
+            }
+        }
+        return ans.size();
+    }
+};
