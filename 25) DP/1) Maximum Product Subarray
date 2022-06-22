@@ -25,3 +25,27 @@ public:
         return ans;
     }
 };
+
+
+
+
+
+
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int maxO=nums[0],minEnd=nums[0],maxEnd=nums[0];
+        
+        for(int i=1;i<nums.size();i++){
+            int temp=maxEnd;
+            
+            maxEnd=max(nums[i],max(maxEnd*nums[i],minEnd*nums[i]));
+            minEnd=min(nums[i],min(temp*nums[i],minEnd*nums[i]));
+            
+            maxO= max(maxO,maxEnd);
+        }
+        
+        return maxO;
+    }
+};
