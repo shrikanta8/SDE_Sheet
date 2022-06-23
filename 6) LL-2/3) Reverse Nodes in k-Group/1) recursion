@@ -26,7 +26,7 @@ public:
         ListNode *prev=head, *var1=head,*var2=NULL;
         int i=0;
         
-        while(i<k && var1){     //reverse function
+        while( i<k ){     //reverse function
             var1= prev->next;
             prev->next = var2;
             var2 = prev;
