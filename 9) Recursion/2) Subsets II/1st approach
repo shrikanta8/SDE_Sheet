@@ -1,0 +1,36 @@
+//https://leetcode.com/problems/subsets-ii/
+
+  //not using & for array a because it will change the sequence when sorting is done
+  
+  void func(vector<int>& nums, vector<vector<int>>& ans,int ind, vector<int> a, set<vector<int>>& se){
+        if(ind== nums.size()){
+            sort(a.begin(), a.end()); //sorting.. so that we can get unique vectors in our ans 
+            se.insert(a);
+            return;
+        }
+        a.push_back(nums[ind]);
+        func(nums, ans, ind+1, a,se); 
+        a.pop_back();
+        func(nums, ans, ind+1, a,se);   //not taking value of current index
+    }
+    
+   vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+   
+       set<vector<int> > se;
+        vector<vector<int> > ans;
+        vector<int> a;
+        func(nums,ans,0,a,se);
+        
+       for(auto s:se){
+           ans.push_back(s);
+       }
+        return ans;
+    }
+    
+    
+    //time: O(2^n) + O(m log m) + adding values to 2D vector
+      where m=2^n,  
+      O(m log m) for set
+      
+     //Space Complexity:  O(2^n * k) 
+        k= average length of subset   
