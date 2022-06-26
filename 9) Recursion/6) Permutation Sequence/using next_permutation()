@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string getPermutation(int n, int k) {
+        vector<int> num;
+        for(int i=1;i<=n;i++){
+            num.push_back(i);
+        }
+        string ans="";
+        k--;
+        while(k--){
+            next_permutation(num.begin(),num.begin()+n);
+        }
+        for(int s:num)
+            ans+=(s+'0');
+        return ans;
+    }
+};
+
+//time complexity of next_permutation() is O(n)
