@@ -1,0 +1,26 @@
+//https://leetcode.com/problems/majority-element/
+
+//brute force: 
+    => n^2
+    => using an unordered map
+
+
+//optimized
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+    
+        int c=0,ele;
+        for(auto n:nums){
+            if(c==0){   //if c gets 0, it means (count of majority element == sum of count of non-majority elements)
+                ele=n;
+            }
+            if(ele==n)
+                c++;
+            else
+                c--;
+        }
+        return ele;
+    }
+};
