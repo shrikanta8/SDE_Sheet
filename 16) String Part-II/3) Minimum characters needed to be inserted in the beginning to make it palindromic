@@ -1,3 +1,5 @@
+//que: https://www.interviewbit.com/problems/minimum-characters-required-to-make-a-string-palindromic/
+
 //https://practice.geeksforgeeks.org/problems/search-pattern0205/1
 //same computeLongestPrefixSuffix() function of above que
 
@@ -35,3 +37,5 @@ int Solution::solve(string str) {
     return origSize - lps[sz-1];
     //lps[sz-1] will have the value which is the largest palindromic string in str;
 }
+
+//O(n) tc
