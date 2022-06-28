@@ -1,0 +1,39 @@
+//https://www.interviewbit.com/problems/largest-continuous-sequence-zero-sum/
+
+vector<int> Solution::lszero(vector<int> &A) {
+    int n = A.size(),sum=0,s=0,e=-1,maxLen=0;
+    
+    unordered_map<int,int> m;
+    
+    vector<int> v;
+    
+    for(int i=0;i<n;i++){
+        
+        sum+=A[i];
+        if(sum == 0){
+            maxLen = i+1;   //no need of max function since it is the max array till now!
+            e = i;s=0;      //s and e will get updated
+        }
+        else{
+            if(m.find(sum) != m.end()){
+                int newLen = i - m[sum];
+                
+                if(newLen > maxLen){
+                    s= m[sum] + 1;
+                    e=i;
+                    maxLen = newLen;
+                }
+                
+            }
+            else
+                m.insert({sum,i});
+        }
+        
+        
+    }
+    
+    for(int j=s;j<=e; j++){
+        v.push_back(A[j]);
+    }
+    return v;
+}
