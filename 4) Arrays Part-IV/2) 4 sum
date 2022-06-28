@@ -1,0 +1,40 @@
+vector<vector<int> > Solution::fourSum(vector<int> &A, int B) {
+    int n=A.size();
+    vector<vector<int> > v;
+    vector<int> vOne(4);
+    sort(A.begin(),A.end());
+    
+    for(int i=0;i<n;i++){
+        
+        if(!i || A[i]!=A[i-1]){
+            
+            for(int j=i+1; j<n;j++){
+                
+                int f=j+1,e=n-1,val = B-(A[i] + A[j]),newVAl;
+                
+                while(f<e){
+                    
+                    newVAl = A[f] + A[e];
+                    if(newVAl > val)
+                        e--;
+                    else if(newVAl < val)
+                        f++;
+                    else{
+                        vOne[0] =A[i]; 
+                        vOne[1] = A[j];
+                        vOne[2] = A[f];
+                        vOne[3] = A[e];
+                        v.push_back(vOne);
+                        
+                        while(f<e && A[f] == vOne[2]) f++;   //next f value
+                        while(f<e && A[e] == vOne[3]) e--;  //next e value
+                    }
+                    
+                }
+                
+                while(j+1<n && A[j] == A[j+1]) j++; //one j++ will occur in for loop of j hence we are doing A[j] == A[j+1]
+            }
+        }
+    }
+    return v;
+}
