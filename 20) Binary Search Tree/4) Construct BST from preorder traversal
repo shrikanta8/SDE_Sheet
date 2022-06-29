@@ -31,3 +31,5 @@ public:
         return bst(preorder, INT_MAX,i);
     }
 };
+
+//tc: O(n)
