@@ -23,6 +23,8 @@ public:
         
         //for left high will become root->val
         return (traversal(root->left,low,root->val) && traversal(root->right,root->val,h) );
+        
+        //if any of them is false then return false
     }
     bool isValidBST(TreeNode* root) {
         if(!root )
