@@ -1,4 +1,4 @@
-//
+//https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 
 /**
  * Definition for a binary tree node.
@@ -13,9 +13,12 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* a, TreeNode* b) {
-    if(!root) return NULL;
+    if(!root) 
+        return NULL;
+        
     if(root->val == a->val || root->val == b->val)
-    return root;
+        return root;
+        
     if(a->val<=root->val && b->val>=root->val || b->val<=root->val && a->val>=root->val)
         return root;
     else if(a->val<=root->val && b->val<=root->val)
