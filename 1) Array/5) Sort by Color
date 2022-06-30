@@ -1,0 +1,17 @@
+//https://www.interviewbit.com/problems/sort-by-color/
+
+void Solution::sortColors(vector<int> &A) {
+    int s=0,m=0,e=A.size()-1;
+    
+    while(m<=e){
+        
+        if(A[m] == 0) swap(A[s++],A[m++]);
+        else if(A[m] == 1) swap(A[s],A[m++]);
+        else swap(A[m],A[e--]);
+        
+    }
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+}
