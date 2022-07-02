@@ -1,5 +1,21 @@
 //https://www.interviewbit.com/problems/rain-water-trapped/
 
+
+//brute force=>
+for every index finding greater element on lhs and rhs
+
+//next approach=>
+using prefix and suffix arrays having left side and right side greater element
+O(2n) space and O(2n) time
+
+
+//next approach=> (hard to explain, don't tell in interviews)
+using stack
+
+
+//optimized
+O(1) space O(n) time
+
 int Solution::trap(const vector<int> &A) {
     int n=A.size();
     int r = n-1,l=0,maxLeft=0,maxRight=0,ans=0;
