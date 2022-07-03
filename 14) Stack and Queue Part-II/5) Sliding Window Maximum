@@ -15,7 +15,7 @@ vector<int> Solution::slidingMaximum(const vector<int> &A, int B) {
     for(int i=0;i<n; i++){
         
         if(q.size() && q.front() <= i-B)    //ermoving from front the elements which is not in our range
-            q.pop_front();
+            q.pop_front();      //not pop();
             
         while(q.size() && (A[i] > A[q.back()]) )    //elements in decreasing order
             q.pop_back();
@@ -27,3 +27,9 @@ vector<int> Solution::slidingMaximum(const vector<int> &A, int B) {
     }
     return v;
 }
+
+
+Time Complexity: O(N)
+
+Space Complexity: O(K)
+
