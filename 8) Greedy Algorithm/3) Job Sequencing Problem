@@ -1,0 +1,41 @@
+//https://practice.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1#
+
+class Solution 
+{
+    public:
+    static bool comp(Job a, Job b){
+        return a.profit>b.profit;
+    }
+    //Function to find the maximum profit and the number of jobs done.
+    
+    //the job with the larger deadline is performed as late as possible 
+    //so that job with shorter deadline can be performed in earlier days!
+    vector<int> JobScheduling(Job arr[], int n) 
+    { 
+        sort(arr,arr+n,comp);
+        int maxDeadline = INT_MIN;
+        for(int i=0;i<n;i++){
+            //finding max deadline
+            maxDeadline = max(maxDeadline,arr[i].dead);
+        }
+        int ans=0,jobs=0;
+        
+        vector<int> chk(maxDeadline+1,-1);
+        for(int i=0;i<n;i++){
+            
+            int deadline = arr[i].dead;
+            //starting from deadline till 1
+            //we are inserting were it is equal to -1
+            while(deadline > 0 && chk[deadline] != -1){
+                deadline--;
+            }
+            if(deadline > 0 && chk[deadline] == -1){
+                chk[deadline]= arr[i].id;   //chk array can tell us the sequence of jobs performed as we are storing id's in it
+                ans += arr[i].profit;
+                jobs++;
+            }
+        }
+        return vector<int> {jobs,ans};
+        // your code here
+    } 
+};
