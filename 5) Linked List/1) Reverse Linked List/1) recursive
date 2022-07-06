@@ -1,0 +1,8 @@
+ListNode* reverse(ListNode* A){
+     if(!A || !A->next)
+        return A;
+    ListNode* head = reverse(A->next);
+    A->next->next = A;
+    A->next = NULL;
+    return head;
+ }
