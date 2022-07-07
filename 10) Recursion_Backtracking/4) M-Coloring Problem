@@ -1,0 +1,40 @@
+//https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1#
+
+
+bool isSafe(int node, bool graph[101][101], int n, vector<int>& color, int currentColor){
+    
+    for(int i=0;i<n;i++){   //vertices are named from 0 to n-1
+        //if our node and ith vertex have an edge between them 
+        //and color on that ith vertex is same as our vertex(node) then it will return false
+        if(node != i && graph[node][i]==1 && color[i]==currentColor)
+            return false;
+    }
+    return true;
+}
+
+bool isPossible(int node, bool graph[101][101], int m, int n, vector<int>& color){
+    if(node == n)   //we have visited all nodes
+        return true;
+        
+    for(int col=1; col<=m; col++){  //searching for all colors
+    
+        if(isSafe(node, graph, n, color, col)){ //if it is safe to fill color col then go to next node node+1
+            color[node]= col;           //filling it with col color
+            
+            if(isPossible(node+1, graph, m, n, color))
+                return true;
+            color[node]=0;
+        }
+    }
+    return false;       //we are not able to fill node with any color! 
+}
+bool graphColoring(bool graph[101][101], int m, int n) {
+    vector<int> color(n);
+    return isPossible(0, graph, m, n, color);
+    // your code here
+}
+
+Time Complexity: O( N^M) (n raised to m)
+
+Space Complexity: O(N)
+
