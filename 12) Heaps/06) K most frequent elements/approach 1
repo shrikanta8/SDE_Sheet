@@ -37,7 +37,8 @@ public:
         
         for(int i=n;i>=0 && ans.size()<k;i--){
             if(!v[i].empty()){
-                ans.insert(ans.end(),v[i].begin(),v[i].end());//write end or begin anything!
+                ans.insert(ans.end(),v[i].begin(),v[i].end());//write end or begin anything!       
+                //since answer is always unique so ther's no need to keep track of k
             }
         }
         return ans;   
