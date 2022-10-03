@@ -15,7 +15,7 @@ public:
                     q.push({num,node});
                       visit[num] =1;
                 }
-                else if(num!=par )    //if num == par => (child and parent are same) then it won't be a cycle
+                else if(num!=par )    //if num == par => (neighbour and parent are same) then it won't be a cycle
                     return true;
           }
       }
