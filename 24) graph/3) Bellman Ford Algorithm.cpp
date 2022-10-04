@@ -8,7 +8,7 @@
 
 
 STEPS
-I. relax all the edges n-1 times
+I. relax all the edges n-1 times (n=NUMBER OF VERTICES)
     if(dist[u] + wt < dist[v])
         dist[v] = dist[u] + wt
         
