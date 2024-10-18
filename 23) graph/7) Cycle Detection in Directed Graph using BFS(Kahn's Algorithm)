@@ -27,7 +27,7 @@ public:
         
         vector<int> edge[numCourses];
         for(auto n: p){
-            edge[n[0]].push_back(n[1]);
+            edge[n[1]].push_back(n[0]);
         }
         return func(numCourses,edge);
     }
