@@ -33,7 +33,5 @@ vector <int> bottomView(Node *root)
 
 Space Complexity: O(N)
 
-
-
-//we can't do it recursively
+//we can't do it recursively because left tree's 10th height value will be overrided by 2nd height of right subtree
 //for recursive approach we have to keep height value also
