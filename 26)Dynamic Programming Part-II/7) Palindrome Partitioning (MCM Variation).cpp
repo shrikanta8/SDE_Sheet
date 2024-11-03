@@ -1,4 +1,6 @@
 //https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1
+// check https://www.youtube.com/watch?v=_H8V5hJUGd0
+// no idea about below soln 
 
 bool isPalindrome(int i,int j,string str){
         while(i<j){
