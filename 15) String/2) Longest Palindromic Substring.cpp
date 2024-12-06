@@ -21,17 +21,16 @@ public:
             
             int l1 = checklongestPalindrome(s,i,i); //odd length
             int l2 = checklongestPalindrome(s,i,i+1);   //even length
-             maxLen = max(l1,l2);
-            
-             if(end-start < maxLen){
-                start = i- ((maxLen-1)/2); //-1 because we are not considering 0 based length size 
-                end = i +( maxLen/2);
+            maxLen = max(l1,l2);
+             if(end+1-start < maxLen){
+                start = i - (maxLen-1)/2; //-1 because it does for even odd length both
+                end = start + maxLen-1;
             }
+            
         }
-        
-        return s.substr(start,(end-start)+1);
+        return s.substr(start,end-start+1);
     }
 };
 
-
 //n^2 tc
+// 
