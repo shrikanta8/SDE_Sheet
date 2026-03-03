@@ -1,3 +1,71 @@
+class Solution {
+  public:
+    int powerFind(int x,int y,int m ){
+        int ans=1;
+        
+        while(y>0){
+            if(y%2!=0){
+                ans=ans*x;
+                if(ans>m){
+                    return 2;
+                }
+                y-=1;
+            }
+            else{
+                x=x*x;
+                y/=2;
+            }
+        }
+        if(m==ans){
+            return 1;
+        }
+        return -1;
+    }
+    int nthRoot(int n, int m) {
+        if(n==0 || m==0){
+            return 0;
+        }
+        // Code here
+        int mid,start=1,end=m;
+        
+        while(start<=end){
+            mid=start+(end-start)/2;
+            
+            int val=powerFind(mid,n,m);
+            if(val==1){
+                return mid;
+            }
+            if(val==2){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        return -1;
+        
+    }
+};
+
+
+
+
+
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 //https://www.youtube.com/watch?v=5snE6xsyheE
 
 
