@@ -12,7 +12,7 @@ public:
         // int start = max(0,k-size2), end = min(k,size1);
         
         int start=0,end=size1;
-        while(start<=end){
+        while(1){
             int cut1 = (start + end)>>1;
             int cut2 = k-cut1;  //cut in 2nd array
             
